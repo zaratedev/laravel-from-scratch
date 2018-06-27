@@ -1,5 +1,12 @@
 @extends('layout.app')
 
 @section('content')
-    <h1>Title blog</h1>
+    <div class="container">
+        <h1>{{ $post->title }}</h1>
+
+        <p class="text-muted">
+            {{ $post->body }}
+        </p>
+    </div>
+
 @endsection
