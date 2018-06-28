@@ -22,6 +22,22 @@
                 @endforeach
             </ul>
         </div>
+        <!-- Add Comment -->
+        <hr>
+        <div class="card">
+            <div class="card-body">
+                <form action="{{ url("posts/$post->id/comments") }}" method="post">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <textarea name="body" id="body" placeholder="Your comment here." class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Comment</button>
+                    </div>
+                    @include('layout.errors')
+                </form>
+            </div>
+        </div>
     </div>
 
 @endsection
