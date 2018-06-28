@@ -43,6 +43,7 @@ class Post extends Model
       return static::selectRaw('year(created_at) as year, monthname(created_at) as month, count(*) published')
       ->groupBy('year', 'month')
       ->orderByRaw('min(created_at) desc')
-      ->get();
+      ->get()
+      ->toArray();
     }
 }

@@ -3,9 +3,9 @@
   <ul class="list-group">
     @foreach ($archives as $stats)
       <li class="list-group-item d-flex justify-content-between align-items-center">
-        <a href="{{ url("/?month=$stats->month&year=$stats->year")}}">
-          {{ $stats->month.' , '. $stats->year}}
-          <span class="badge badge-primary badge-pill">{{ $stats->published }}</span>
+        <a href="/?month={{ $stats['month'] }}&year={{$stats['year']}}">
+          {{ $stats['month'].' , '. $stats['year']}}
+          <span class="badge badge-primary badge-pill">{{ $stats['published'] }}</span>
         </a>
       </li>
     @endforeach
