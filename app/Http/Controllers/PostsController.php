@@ -10,10 +10,17 @@ class PostsController extends Controller
     public function __construct() {
       $this->middleware('auth')->except(['index', 'show']);
     }
-    public function index() {
-        $posts = Post::latest()->get();
 
-        return view('posts.index', compact('posts'));
+    public function index() {
+
+        $posts = Post::latest()->filter(request(['month', 'year']))->get();
+
+        $archives = Post::selectRaw('year(created_at) as year, monthname(created_at) as month, count(*) published')
+        ->groupBy('year', 'month')
+        ->orderByRaw('min(created_at) desc')
+        ->get();
+
+        return view('posts.index', compact('posts', 'archives'));
     }
 
     public function show(Post $post) {
