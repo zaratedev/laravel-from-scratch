@@ -10,4 +10,15 @@
       </li>
     @endforeach
   </ul>
+
+  <h4>Tags</h4>
+  <ul class="list-group">
+    @foreach ($tags as $tag)
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <a href="{{ url('/posts/tag/'.$tag)}}">
+          {{ $tag}}
+        </a>
+      </li>
+    @endforeach
+  </ul>
 </div>

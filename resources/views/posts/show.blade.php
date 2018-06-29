@@ -9,6 +9,16 @@
           <p class="text-muted">
               {{ $post->body }}
           </p>
+
+          @if (count($post->tags))
+            <ul>
+              @foreach ($post->tags as $tag)
+                <li>
+                  <a href="{{ url('/posts/tag/'.$tag->name)}}">{{ $tag->name }}</a>
+                </li>
+              @endforeach
+            </ul>
+          @endif
           <hr>
           <strong>Comments!</strong>
           <hr>
